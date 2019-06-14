@@ -15,10 +15,10 @@ CREATE TABLE IF NOT EXISTS product
 (
     id        INT                           NOT NULL AUTO_INCREMENT PRIMARY KEY,
     code      VARCHAR(32)            UNIQUE NOT NULL,
-    category  VARCHAR(32)                   NOT NULL,
+    category  VARCHAR(32)                   NOT NULL DEFAULT 'unsorted',
     name      VARCHAR(32)                   NOT NULL CHECK ( name <> '' ),
-    material  VARCHAR(32)                   NOT NULL,
-    unit      VARCHAR(8)                    NOT NULL DEFAULT 0
+    material  VARCHAR(32)                            DEFAULT NULL,
+    unit      VARCHAR(8)                    NOT NULL DEFAULT 'm'
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS document
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS catalog
 CREATE TABLE IF NOT EXISTS payment
 (
     id           INT                  UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    order_id     INT                         NOT NULL,
+    order_id     INT                  UNIQUE NOT NULL,
     sum          BIGINT                      NOT NULL DEFAULT 0,
     p_date       TIMESTAMP                   NOT NULL DEFAULT current_timestamp,
     doc_num      INT                         NOT NULL DEFAULT 0,
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS payment
 
     FOREIGN KEY (order_id)  REFERENCES order_t (id),
 #     FOREIGN KEY (cust_code) REFERENCES order_t (cust_code),
-        FOREIGN KEY (doc_num)   REFERENCES document (doc_num)
+    FOREIGN KEY (doc_num)   REFERENCES document (doc_num)
 ) ENGINE=InnoDB;
 
 -- CREATE OR REPLACE VIEW spring_flight AS
