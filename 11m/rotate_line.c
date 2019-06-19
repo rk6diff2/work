@@ -158,8 +158,3 @@ void delay_func(int number_of_seconds) {
   while (clock() < start_time + milli_seconds) {}
 }
 
-int rubin(Display *dpy, Window win, XEvent *ev) {
-  if (ev->xbutton.button != Button1)
-    return (~Button1);
-  return (Button1); /* return to rubber deform & resize */
-}
