@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS detail
     ticket_id   INT                         NOT NULL,
     price       INT                         NOT NULL DEFAULT 0,
     buy_date    TIMESTAMP                   NOT NULL DEFAULT current_timestamp,
+    miles       INT                         NOT NULL DEFAULT 0,
 
     FOREIGN KEY (profile_id) REFERENCES profile (uid),
     FOREIGN KEY (ticket_id)  REFERENCES ticket  (uid)
