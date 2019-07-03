@@ -1,0 +1,7 @@
+*.swo
+*.swp
+*.out
+*.exe
+*.plain
+*.log
+.idea
