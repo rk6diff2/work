@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS profile
 CREATE TABLE IF NOT EXISTS ticket
 (
     uid         INT                         NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    flight      INT                         NOT NULL,
     dep_airport VARCHAR(256)                NOT NULL CHECK ( dep_airport <> '' ),
     arr_airport VARCHAR(256)                NOT NULL CHECK ( arr_airport <> '' ),
     dep_date    TIMESTAMP                   NOT NULL DEFAULT current_timestamp,
