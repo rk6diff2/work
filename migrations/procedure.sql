@@ -10,7 +10,7 @@ BEGIN
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
     OPEN cur;
     WHILE done = 0 DO
-    FETCH cur INTO profile_id, ticket_miles;
+        FETCH cur INTO profile_id, ticket_miles;
         UPDATE profile SET miles = miles + ticket_miles WHERE uid = profile_id;
     END WHILE;
 END $$
